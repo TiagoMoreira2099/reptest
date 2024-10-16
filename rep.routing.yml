@@ -1,0 +1,230 @@
+
+# Landing page
+
+rep.home:
+  path: '/'
+
+# Main menu options 
+
+rep.describe_element:
+  path: 'rep/uri/{elementuri}'
+  defaults:
+    _form: '\Drupal\rep\Form\DescribeForm'
+  requirements:
+    _permission: 'access content'
+    _custom_access_check: 'TRUE'    
+
+# Element URI 
+
+rep.element_uri:
+  path: 'rep/uriform'
+  defaults:
+    _form: '\Drupal\rep\Form\UriForm'
+  requirements:
+    _permission: 'access content'
+    _custom_access_check: 'TRUE'    
+  options:
+    no_cache: 'TRUE'
+
+# Search
+
+rep.search:
+  path: 'rep/list/{elementtype}/{keyword}/{language}/{page}/{pagesize}'
+  defaults:
+    _form: '\Drupal\rep\Form\REPListForm'
+    elementtype: 'datafile'
+    keyword: '_'
+    language: '_'
+    page: '1'
+    pagesize: '12'
+  requirements:
+    _permission: 'access content'
+    _custom_access_check: 'TRUE'    
+  options:
+    no_cache: 'TRUE'
+
+# BackUrl
+
+rep.back_url:
+  path: 'rep/backurl/{previousurl}/{currenturl}/{currentroute}'
+  defaults:
+    _controller: '\Drupal\rep\Controller\BackUrlController::previous'
+    _title: "Record previous URL"
+  requirements:
+    _permission: 'access content'
+    _custom_access_check: 'TRUE'    
+
+# Delete Element
+
+rep.delete_element:
+  path: 'rep/manage/deleteelement/{elementtype}/{elementuri}/{currenturl}'
+  defaults:
+    _controller: '\Drupal\rep\Controller\DeleteElementController::exec'
+    _title: "Delete Element"
+  requirements:
+    _permission: 'access content'
+    _custom_access_check: 'TRUE'  
+
+# List/Select Element
+
+rep.list_element:
+  path: 'rep/list/{elementtype}/{keyword}/{page}/{pagesize}'
+  defaults:
+    _form: '\Drupal\rep\Form\REPInfiniteListForm'
+  requirements:
+    _permission: 'access content'
+    _custom_access_check: 'TRUE'    
+  options:
+    no_cache: 'TRUE'
+
+rep.select_element:
+  path: 'rep/select/{elementtype}/{page}/{pagesize}'
+  defaults:
+    _form: '\Drupal\rep\Form\REPSelectForm'
+  requirements:
+    _permission: 'access content'
+    _custom_access_check: 'TRUE'    
+  options:
+    no_cache: 'TRUE'
+    
+rep.select_mt_element:
+  path: 'rep/select/mt/{elementtype}/{mode}/{page}/{pagesize}/{studyuri}'
+  defaults:
+    _form: '\Drupal\rep\Form\REPSelectMTForm'
+  requirements:
+    _permission: 'access content'
+    _custom_access_check: 'TRUE'    
+  options:
+    no_cache: 'TRUE'
+
+# MT CRUD options
+
+rep.add_mt:
+  path: 'rep/manage/addmt/{elementtype}/{studyuri}/{fixstd}'
+  defaults:
+    _form: '\Drupal\rep\Form\AddMTForm'
+    # _title: 'Add Metadata Template'    
+  requirements:
+    _permission: 'access content'
+    _custom_access_check: 'TRUE'    
+  options:
+    no_cache: 'TRUE'
+    parameters:
+      studyuri:
+        type: string
+        default: null
+
+rep.edit_mt:
+  path: 'std/manage/editmt/{elementtype}/{elementuri}/{fixstd}'
+  defaults:
+    _form: '\Drupal\rep\Form\EditMTForm'
+    # _title: 'Edit Metadata Template'    
+  requirements:
+    _permission: 'access content'  
+    _custom_access_check: 'TRUE'      
+  options:
+    no_cache: 'TRUE'
+
+# Data File
+
+rep.datafile_showlog:
+  path: 'rep/log/{datafileuri}'
+  defaults:
+    _controller: '\Drupal\rep\Controller\DataFileController::showLog'
+    _title: "Data File's Log"
+  requirements:
+    _permission: 'access content'
+    _custom_access_check: 'TRUE'    
+
+rep.datafile_download:
+  path: 'rep/download/{datafileuri}'
+  defaults:
+    _controller: '\Drupal\rep\Controller\DataFileController::download'
+    _title: "Data File's Download"
+  requirements:
+    _permission: 'access content'
+    _custom_access_check: 'TRUE'    
+
+# Configuration option
+
+rep.admin_settings_custom:
+  path: 'admin/config/rep'
+  defaults:
+    _form: '\Drupal\rep\Form\REPSettingsForm'
+    _title: 'Semantic Repository Settings'
+  requirements:
+    _permission: 'administer site configuration'
+  options:
+    _admin_route: TRUE
+    no_cache: 'TRUE'
+
+rep.admin_ip_settings_custom:
+  path: 'admin/config/rep/ip'
+  defaults:
+    _form: '\Drupal\rep\Form\IPForm'
+    _title: 'Semantic Repository IP Settings'
+  requirements:
+    _permission: 'administer site IP configuration'
+  options:
+    _admin_route: TRUE
+    no_cache: 'TRUE'
+
+rep.admin_namespace_settings_custom:
+  path: 'admin/config/rep/namespace'
+  defaults:
+    _form: '\Drupal\rep\Form\REPNameSpaceForm'
+    _title: 'Semantic Repository NameSpace Management'
+  requirements:
+    _permission: 'administer site NameSpace configuration'
+  options:
+    _admin_route: TRUE
+    no_cache: 'TRUE'
+
+rep.repo_info:
+  path: 'rep/repo/info'
+  defaults:
+    _form: '\Drupal\rep\Form\RepoInfoForm'
+    _title: 'Current Repository Configuration'    
+  requirements:
+    _permission: 'access content'
+    _custom_access_check: 'TRUE'    
+  options:
+    no_cache: 'TRUE'
+
+# About
+
+rep.about:
+  path: 'rep/about'
+  defaults:
+    _form: '\Drupal\rep\Form\About'
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: 'TRUE'
+
+rep.help:
+  path: '/admin/help/semantics'
+  defaults:
+    _title: 'Semantics Package Help'
+    _controller: '\Drupal\rep\Controller\RepController::help'
+  requirements:
+    _permission: 'administer site configuration'
+
+# AUTOCOMPLETE
+
+rep.dd_autocomplete:
+  path: '/rep/dd/autocomplete'
+  defaults:
+    _controller: '\Drupal\rep\Controller\JsonApiDDController::handleAutocomplete'
+    _format: json
+  requirements:
+    _permission: 'access content'
+
+rep.sdd_autocomplete:
+  path: '/rep/sdd/autocomplete'
+  defaults:
+    _controller: '\Drupal\rep\Controller\JsonApiSDDController::handleAutocomplete'
+    _format: json
+  requirements:
+    _permission: 'access content'
+

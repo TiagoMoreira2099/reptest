@@ -1,0 +1,76 @@
+    
+rep.top_level:
+  title: Repository
+  description: Manage Repository
+  route_name: rep.about
+  menu_name: main
+  weight: 100
+  requirements:
+    _permission: 'access content'
+
+rp.kg:
+  title: Knowledge Graph
+  description: Manage Knowledge Graph
+  route_name: rep.about
+  menu_name: main
+  weight: 10
+  requirements:
+    _permission: 'access content'
+    
+    
+rp.dpl:
+  title: Deployment Elements
+  description: Manage Deployments
+  route_name: '<none>'
+  menu_name: main
+  weight: 90
+  requirements:
+    _permission: 'access content'
+    
+    
+rep.uri_describe:
+  title: Describe URI
+  description: Describe URI
+  route_name: rep.element_uri
+  parent: rep.top_level
+  menu_name: main
+  weight: 1
+  requirements:
+    _permission: 'access content'
+
+rep.manage_datafile:
+  title: Manage Data Files
+  description: Manage Data Files
+  route_name: rep.select_element
+  route_parameters:
+    elementtype: 'datafile'
+    page: '1'
+    pagesize: '10'
+  parent: rep.top_level
+  menu_name: main
+  weight: 3
+  requirements:
+    _permission: 'access content'
+    _role: 'authenticated'
+
+rep.about:
+  title: About
+  description: About
+  route_name: rep.about
+  parent: rep.top_level
+  menu_name: main
+  weight: 6
+  requirements:
+    _permission: 'access content'
+
+rep.admin_settings_link:
+  title: Configuration
+  description: Semantic Repository Settings
+  menu_name: main 
+  route_name: rep.admin_settings_custom
+  parent: rep.top_level
+  weight: 7
+  requirements:
+    _permission: 'access content'
+    _role: 'authenticated'
+

@@ -1,0 +1,27 @@
+rep_js_css:
+  version: 1.0
+  css:
+    theme:
+      css/rep.css: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/jquery.once
+infinitescroll:
+  version: 1.x
+  js:
+    js/infinitescroll.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupal.ajax
+scrollable_table:
+  version: 1.x
+  css:
+    theme:
+      css/scrollable_table.css: {}
+fontawesome5:
+  version: 1.0
+  css:
+    component:
+      //use.fontawesome.com/releases/v5.15.4/css/all.css: {}
