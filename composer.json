@@ -4,6 +4,9 @@
     "type": "drupal-module",
     "require": {
         "php": ">=8.3",
-        "drupal/core": "^10"
-    }
+        "drupal/core": "^10",
+        "drupaltestrep/rep": "dev-main"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
