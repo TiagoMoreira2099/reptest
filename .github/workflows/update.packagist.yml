@@ -11,6 +11,6 @@ jobs:
     steps:
     - name: Notify Packagist of update
       run: |
-        curl -X POST https://packagist.org/api/update-package?username=tiagomoreira&apiToken=${{ secrets.PACKAGIST_TOKEN }} \
+        curl -X POST "https://packagist.org/api/update-package?username=tiagomoreira&apiToken=${{ secrets.PACKAGIST_TOKEN }}" \
         -H "Content-Type: application/json" \
         -d '{"repository":{"url":"https://github.com/TiagoMoreira2099/reptest"}}'
