@@ -3,7 +3,7 @@ name: Build and Publish reptest
 on:
   push:
     branches:
-      - DEVELOPMENT_V0.8
+      - DEVELOPMENT_V0.7
 
 jobs:
   build:
@@ -20,7 +20,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image for hascoapi
-        run: docker build -t TiagoMoreira2099/reptest:DEVELOPMENT_V0.8 .
+        run: docker build -t TiagoMoreira2099/reptest:DEVELOPMENT_V0.7 .
 
       - name: Push Docker image to Docker Hub
-        run: docker push TiagoMoreira2099/reptest:DEVELOPMENT_V0.8
+        run: docker push TiagoMoreira2099/reptest:DEVELOPMENT_V0.7
